@@ -15,9 +15,9 @@ public class Trabalho {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
 	private int id;
-	
-	public Trabalho(){
-		
+
+	public Trabalho() {
+
 	}
 
 	public Trabalho(int id) {
@@ -32,4 +32,5 @@ public class Trabalho {
 		this.id = id;
 	}
 	
+
 }
