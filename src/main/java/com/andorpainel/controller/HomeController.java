@@ -43,6 +43,11 @@ public class HomeController {
 	    Long tPessoas = pessoaRepository.count();
 	    Long tPessoasMasc = pessoaRepository.TotalMasc();
 	    Long tPessoasFem =	pessoaRepository.TotalFem();	
+	    Long tPessoasOutros = tPessoas - tPessoasMasc - tPessoasFem;
+	    Long tPessoasMascPercent = (tPessoasMasc*100)/tPessoas;
+	    Long tPessoasFemPercent = (tPessoasFem*100)/tPessoas;
+	    Long tPessoasOutrosPercent = (tPessoasOutros*100)/tPessoas;
+	    
 	    	
 	    Long tOngs = ongRepository.count();
 	    
@@ -57,22 +62,29 @@ public class HomeController {
 	    Long tEmpregosPj = trabalhoRepository.TotalPj();
 	    Long tEmpregosTemp = trabalhoRepository.TotalTemporario();
 	    
+	    map.put("id", (long) 1);
+	    
 	    map.put("pessoas", tPessoas);
-	    map.put("pessoas.homens", tPessoasMasc);
-	    map.put("pessoas.mulheres", tPessoasFem);
+	    map.put("pessoasHomens", tPessoasMasc);
+	    map.put("pessoasMulheres", tPessoasFem);
+	    map.put("pessoasOutros", tPessoasOutros);
+	    map.put("pessoasHomensPercent", tPessoasMascPercent);
+	    map.put("pessoasMulheresPercent", tPessoasFemPercent);
+	    map.put("pessoasOutrosPercent", tPessoasOutrosPercent);
+	    
 	    
 	    map.put("ongs", tOngs);
 	    
 	    map.put("moradias", tMoradias);
-	    map.put("moradias.apartamentos", tMoradiasAp);
-	    map.put("moradias.casas", tMoradiasCasa);
-	    map.put("moradias.quarto", tMoradiasQuarto);
+	    map.put("moradiasApartamentos", tMoradiasAp);
+	    map.put("moradiasCasas", tMoradiasCasa);
+	    map.put("moradiasQuarto", tMoradiasQuarto);
 	    
 	    map.put("empregos", tEmpregos);
-	    map.put("empregos.clt", tEmpregosClt);
-	    map.put("empregos.autonomo", tEmpregosAutonomo);
-	    map.put("empregos.pj", tEmpregosPj);
-	    map.put("empregos.temporario", tEmpregosTemp);
+	    map.put("empregosClt", tEmpregosClt);
+	    map.put("empregosAutonomo", tEmpregosAutonomo);
+	    map.put("empregosPj", tEmpregosPj);
+	    map.put("empregosTemporario", tEmpregosTemp);
 	    
 	    return map;
 	} 
